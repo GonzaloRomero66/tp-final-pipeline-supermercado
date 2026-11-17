@@ -317,5 +317,226 @@ def _(mo):
     return
 
 
+@app.cell
+def _():
+    import duckdb
+    conexion_duckdb = duckdb.connect("datos/stock.sqlite")
+    return (conexion_duckdb,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Esto crea o abre nuestra base de datos DuckDB en la carpeta datos
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TABLE raw_movimientos AS
+        SELECT * FROM datos
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca creamos la tabla raw_movimientos y copiamos todos los datos
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT COUNT(*) FROM raw_movimientos
+    """).fetchall()
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        DESCRIBE raw_movimientos
+    """).df()
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT COUNT(*)
+        FROM raw_movimientos
+        WHERE id_movimiento IS NULL
+           OR TRIM(id_movimiento) = ''
+    """).fetchall()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Estamos verificando que el id_movimiento no este vacio
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT COUNT(*) - COUNT(DISTINCT id_movimiento)
+        FROM raw_movimientos
+    """).fetchall()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Estan los 75 id_movimientos que se repiten
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT COUNT(*)
+        FROM raw_movimientos
+        WHERE TRY_STRPTIME(fecha, '%Y-%m-%d') IS NULL
+    """).fetchall()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Hay 260 fechas que no cumples el formato %Y-%m-%d
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT COUNT(*)
+        FROM raw_movimientos
+        WHERE id_producto IS NULL
+           OR TRIM(id_producto) = ''
+    """).fetchall()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    No hay ningun id_producto que este vacio
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT sucursal, COUNT(*)
+        FROM raw_movimientos
+        GROUP BY sucursal
+        ORDER BY sucursal
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca podemos ver devuelta que hay distintos nombres de sucursales, habra que corregirlos
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT COUNT(*)
+        FROM raw_movimientos
+        WHERE sucursal NOT IN (
+            'Sucursal Norte',
+            'Sucursal Sur',
+            'Sucursal Centro'
+        )
+    """).fetchall()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Hay 155 que tienen espacios adicionales o diferencias de escrituras de Sucursal Norte, Sucursal Sur, Sucursal Centro
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT COUNT(*)
+        FROM raw_movimientos
+        WHERE tipo_movimiento NOT IN (
+            'venta',
+            'ingreso',
+            'merma'
+        )
+    """).fetchall()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Hay 206 registros que su tipo de movimiento no coincide con venta, ingreso o merma
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT COUNT(*)
+        FROM raw_movimientos
+        WHERE cantidad <= 0
+    """).fetchall()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Hay 100 registros con cantidad menor o igual que 0
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT COUNT(*)
+        FROM raw_movimientos
+        WHERE costo_unitario IS NULL
+       
+    """).fetchall()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Hay 130 registros que tienen un costo unitario nulo
+    """)
+    return
+
+
 if __name__ == "__main__":
     app.run()

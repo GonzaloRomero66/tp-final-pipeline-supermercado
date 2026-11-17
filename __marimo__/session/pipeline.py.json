@@ -522,6 +522,318 @@
         }
       ],
       "console": []
+    },
+    {
+      "id": "KREB",
+      "code_hash": "5d21eb3d708a07e5f2764f5ab83539e9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "NjbG",
+      "code_hash": "ee380f8bbec05cb4d59c3be43dc3419d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Esto crea o abre nuestra base de datos DuckDB en la carpeta datos</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Jiyr",
+      "code_hash": "e057cb73cf9ef42c933e9d0891a8deae",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;_duckdb.DuckDBPyConnection object at 0x000001FBA83DD290&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dQCo",
+      "code_hash": "22964c685525ab0cdd91baebd148ffc2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Aca creamos la tabla raw_movimientos y copiamos todos los datos</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "uFTo",
+      "code_hash": "ccfd1b1842d51e87ffc96dba7532208b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[2575]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "cImw",
+      "code_hash": "94ffa860e9f531307a1544305c861bba",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='cImw-0' random-id='9d32b7f8-70e9-f6e9-9577-41d63d82fae6'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;column_name&#92;&quot;:&#92;&quot;id_movimiento&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;fecha&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;id_producto&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;producto&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;categoria&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;sucursal&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;tipo_movimiento&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;cantidad&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;BIGINT&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;costo_unitario&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;DOUBLE&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;proveedor&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null}]&quot;' data-total-rows='10' data-total-columns='6' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;column_name&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;column_type&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;null&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;key&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;default&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;extra&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ashA",
+      "code_hash": "f0c7bacafaa23ebcc1b24dc953d1bb51",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[0]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "gZbA",
+      "code_hash": "edd0c60f1a97670711b83297fcb20e57",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Estamos verificando que el id_movimiento no este vacio</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "HhlV",
+      "code_hash": "34f942dcbde8bfb0d2c14f23e5ad2bfe",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[75]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "sdxE",
+      "code_hash": "561569b886a67165144309218c82d4b3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Estan los 75 id_movimientos que se repiten</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iaBj",
+      "code_hash": "ab52228d86bf908ee07b92a7aac455dc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[260]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "mvYd",
+      "code_hash": "edd880968cd7cd270c6bd5c31fe2e236",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 260 fechas que no cumples el formato %Y-%m-%d</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Dvdd",
+      "code_hash": "df758a40979de383be35f564dd495b63",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[0]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "OpWq",
+      "code_hash": "5a308a3b300fdcd88a6690aed60b12fb",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">No hay ningun id_producto que este vacio</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "AdxX",
+      "code_hash": "61a661280cc86a4b7ed3f35c183ad332",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='AdxX-0' random-id='c08c3e1c-dc3e-b8e6-d5a3-b6964dd60f6d'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;  Sucursal Centro &#92;&quot;,&#92;&quot;count_star()&#92;&quot;:17},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;  Sucursal Norte &#92;&quot;,&#92;&quot;count_star()&#92;&quot;:13},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;  Sucursal Sur &#92;&quot;,&#92;&quot;count_star()&#92;&quot;:12},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot; Sucursal Centro&#92;&quot;,&#92;&quot;count_star()&#92;&quot;:20},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot; Sucursal Norte&#92;&quot;,&#92;&quot;count_star()&#92;&quot;:16},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot; Sucursal Sur&#92;&quot;,&#92;&quot;count_star()&#92;&quot;:21},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;count_star()&#92;&quot;:823},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro  &#92;&quot;,&#92;&quot;count_star()&#92;&quot;:20},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;count_star()&#92;&quot;:825},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte  &#92;&quot;,&#92;&quot;count_star()&#92;&quot;:22}]&quot;' data-total-rows='12' data-total-columns='2' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;sucursal&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;count_star()&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "cWcd",
+      "code_hash": "1e50c72160788232170f46afc78a0f7e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Aca podemos ver devuelta que hay distintos nombres de sucursales, habra que corregirlos</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PDzH",
+      "code_hash": "1ba9a62499f28eb83be89e41223d9b92",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[155]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "CxZv",
+      "code_hash": "1b06605fa6a477ff9725af2fed802de0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 155 que tienen espacios adicionales o diferencias de escrituras de Sucursal Norte, Sucursal Sur, Sucursal Centro</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "VeRu",
+      "code_hash": "2908260bfd6a13a5b7e1def0714b99a5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[206]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iFUU",
+      "code_hash": "c4e58c0f2bee38498cd3e883a6e989ff",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 206 registros que su tipo de movimiento no coincide con venta, ingreso o merm</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "VeOL",
+      "code_hash": "d9238aab58787d7fa9368ab3a8434f73",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[100]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "rjSH",
+      "code_hash": "e7b9952a0c443573f6e9f14abf585c5f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 100 registros con cantidad menor o igual que 0</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "egdD",
+      "code_hash": "12ea795bfe9d981a8c6f5c494c122794",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[130]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "LjYz",
+      "code_hash": "e00369fa387d0e0777acf88638ed5490",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 130 registros que tienen un costo unitario nulo</span></span>"
+          }
+        }
+      ],
+      "console": []
     }
   ]
 }
