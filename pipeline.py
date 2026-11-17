@@ -806,5 +806,378 @@ def _(conexion_duckdb):
     return
 
 
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT tipo_movimiento, COUNT(*) AS cantidad
+        FROM rechazados_limpios
+        WHERE motivo_rechazo LIKE '%Tipo de movimiento inválido%'
+        GROUP BY tipo_movimiento
+        ORDER BY cantidad DESC
+    """).df()
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TABLE rechazados_limpios AS
+        SELECT
+            * REPLACE (
+                LOWER(TRIM(tipo_movimiento)) AS tipo_movimiento
+            )
+        FROM rechazados_limpios
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Esto corrige los espacios y las mayusculas
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT tipo_movimiento, COUNT(*) AS cantidad
+        FROM rechazados_limpios
+        GROUP BY tipo_movimiento
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca podemos ver como quedarons los nombres de los tipo de movimientos corregidos
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT sucursal, COUNT(*) AS cantidad
+        FROM rechazados_limpios
+        WHERE motivo_rechazo LIKE '%Sucursal inválida%'
+        GROUP BY sucursal
+        ORDER BY cantidad DESC
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca podemos ver que estan mal los nombres de las sucursales
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TABLE rechazados_limpios AS
+        SELECT
+            * REPLACE (
+                TRIM(sucursal) AS sucursal
+            )
+        FROM rechazados_limpios
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca estamos corrigiendo los nombres para que no haya espacio o que esten escritos de otra forma
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT costo_unitario, COUNT(*) AS cantidad
+        FROM rechazados_limpios
+        WHERE motivo_rechazo LIKE '%Costo inválido%'
+        GROUP BY costo_unitario
+        ORDER BY cantidad DESC
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca podemos ver que hay 130 costos unitarios con valores nulos y no podemos todavia corregirlos porque no podemos inventar un valor o ponerlo solo en 0
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT cantidad, COUNT(*) AS cantidad_registros
+        FROM rechazados_limpios
+        WHERE motivo_rechazo LIKE '%Cantidad inválida%'
+        GROUP BY cantidad
+        ORDER BY cantidad
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca podemos ver devuelta el problema, las cantidades son negativas, no se puede modificar o ponerlo en positivo porque puede cambiar el movimiento, por el momento se conservara tal y como esta
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT id_movimiento, COUNT(*) AS cantidad
+        FROM rechazados_limpios
+        WHERE motivo_rechazo LIKE '%ID duplicado%'
+        GROUP BY id_movimiento
+        ORDER BY cantidad DESC
+        LIMIT 10
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca se puede ver los id de movimiento que estan duplicados
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT *
+        FROM rechazados_limpios
+        WHERE id_movimiento IN (
+            SELECT id_movimiento
+            FROM rechazados_limpios
+            WHERE motivo_rechazo LIKE '%ID duplicado%'
+            GROUP BY id_movimiento
+            HAVING COUNT(*) > 1
+        )
+        ORDER BY id_movimiento
+        LIMIT 15
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca podemos ver que los id de movimiento que estan duplicados directamente son registro duplicados, osea todo es igual, asi que solo tendremos que borrar uno de cada uno o 2 dependiendo del caso de los que estaban repetidos 3 veces para que quede bien
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TABLE rechazados_limpios AS
+        SELECT DISTINCT *
+        FROM rechazados_limpios
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Eliminamos todas las duplicaciones y solo queda 1 de cada 1
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT id_movimiento, COUNT(*) AS cantidad
+        FROM rechazados_limpios
+        GROUP BY id_movimiento
+        HAVING COUNT(*) > 1
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Y como se puede ver ya no hay id de movimiento que se repita
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TABLE rechazados_limpios AS
+        SELECT
+            * EXCLUDE (motivo_rechazo),
+            CONCAT_WS(' | ',
+                CASE
+                    WHEN costo_unitario IS NULL OR costo_unitario < 0
+                    THEN 'Costo inválido'
+                END,
+                CASE
+                    WHEN cantidad IS NULL OR cantidad <= 0
+                    THEN 'Cantidad inválida'
+                END
+            ) AS motivo_rechazo
+        FROM rechazados_limpios
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Esto vuelve a evaluar los errores que todavía no pudimos solucionar. Los registros que ya corregimos dejarán de tener esos motivos
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT motivo_rechazo, COUNT(*) AS cantidad
+        FROM rechazados_limpios
+        WHERE motivo_rechazo <> ''
+        GROUP BY motivo_rechazo
+        ORDER BY cantidad DESC
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Ahora podemos ver que solo quedan costo invalido y cantidad invalida
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT
+            COUNT(*) AS total,
+            COUNT(*) FILTER (
+                WHERE motivo_rechazo = ''
+            ) AS recuperados,
+            COUNT(*) FILTER (
+                WHERE motivo_rechazo <> ''
+            ) AS pendientes
+        FROM rechazados_limpios
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca podemos ver la cantidad de registros que pudimos recuperar y los que todavia siguen rechazados
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT *
+        FROM rechazados_limpios
+        WHERE motivo_rechazo = ''
+        LIMIT 10
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca podemos ver que los datos ya fueron corregidos aunque el de repeticiones de id sigue mal, eso se corregira ahora
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TABLE rechazados_limpios AS
+        SELECT
+            * REPLACE (
+                COUNT(*) OVER (
+                    PARTITION BY id_movimiento
+                ) AS repeticiones_id
+            )
+        FROM rechazados_limpios
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Se corrigio el problema de que las repeticiones de id seguia mostrando 2 en vez de 1
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TABLE tabla_final AS
+
+        SELECT *
+        FROM validos
+
+        UNION ALL
+
+        SELECT *
+        FROM rechazados_limpios
+        WHERE motivo_rechazo = ''
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Creamos la tabla final que tiene los registros recuperados mas los que ya estaban bien
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT COUNT(*) AS total_registros
+        FROM tabla_final
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca podemos ver que
+    """)
+    return
+
+
 if __name__ == "__main__":
     app.run()
