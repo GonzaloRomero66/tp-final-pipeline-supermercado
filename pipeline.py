@@ -8,6 +8,312 @@ app = marimo.App(width="medium")
 def _():
     import marimo as mo
 
+    return (mo,)
+
+
+@app.cell
+def _():
+    import sqlite3 
+    import pandas as pd
+
+    conexion = sqlite3.connect("datos/stock.sqlite")
+    return conexion, pd
+
+
+@app.cell
+def _(conexion, pd):
+    tablas = pd.read_sql_query(
+        "SELECT name FROM sqlite_master WHERE type='table'", conexion
+    )
+    tablas
+    return
+
+
+@app.cell
+def _(conexion, pd):
+    columnas = pd.read_sql_query(
+        "PRAGMA table_info(movimientos)", conexion
+    )
+    columnas
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _(conexion, pd):
+    total_registros = pd.read_sql_query(
+        "SELECT COUNT(*) AS total FROM movimientos", conexion
+    )
+    total_registros
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Etamos contando la cantidad de registros que serian filas en la tabla movimientos
+    """)
+    return
+
+
+@app.cell
+def _(conexion, pd):
+    datos = pd.read_sql_query(
+        "SELECT * FROM movimientos", conexion
+    )
+    datos.isna().sum()
+    return (datos,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Estamos sumando las cantidades de valores nulos de cada columna
+    """)
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _(conexion, mo):
+    _df = mo.sql(
+        f"""
+        SELECT * FROM
+        """,
+        engine=conexion
+    )
+    return
+
+
+@app.cell
+def _(datos):
+    datos[datos.isna().any(axis=1)].head(10)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Estamos buscando filas que tengan al menos un dato vacio y muestra las primeras 10
+    any() sirve para comprobar si al menos una condición se cumple.
+    axis=1 indica que revise por filas, si usamos axis=0 estaremos haciendo que revise por columnas
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos.nunique()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    nunique() cuenta cuántos valores hay sin repetirlos e ignorando los nulos
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos["sucursal"].value_counts()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    En la actividad se nos aclaro que solo son 3 sucursales pero como podemos ver algunas estan mal escritas y entonces se toman como si fueran 12
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos["tipo_movimiento"].value_counts()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Como podemos ver, pasa lo mismo con los tipos de movimientos por eso aparecen mal y hacen como si fuesen mas de lo que deberia
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos["categoria"].value_counts()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Categoria esta todo bien escrito
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos["producto"].value_counts()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    En producto esta todo bien escrito los respectivos nombres
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos["fecha"].describe()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Estamos viendo un resumen, en este caso como las fechas estan en texto podemos mostrar informacion como la cantidad de registros valores unicos, etc
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos["fecha"].str.contains("/", na=False).sum()
+    return
+
+
+@app.cell
+def _(datos):
+    datos["fecha"].str.contains("-", na=False).sum()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    El formato de las fechas es con -
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos["cantidad"].describe()
+    return
+
+
+@app.cell
+def _(datos):
+    datos[datos["cantidad"] < 0]
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Hay cantidades en cantidad negativa, ese es otro problema
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos["costo_unitario"].describe()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ¿Qué encontramos?
+    - Hay 2575 movimientos en total.
+    - Solamente 2445 tienen costo registrado.
+    - Por lo tanto, hay 130 valores faltantes.
+    - Los costos existentes van de 650 a 2800.
+    - No aparecen costos negativos.
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos["proveedor"].value_counts()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    No encontramos ningun problema con los proveedores
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos["id_producto"].value_counts()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ¿Qué descubrimos?
+    - Hay 10 productos identificados.
+    - P08 es el que más aparece, con 278 movimientos.
+    - P03 es el que menos aparece, con 233 movimientos.
+    - Los 10 productos suman los 2575 registros.
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos["id_movimiento"].duplicated().sum()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Se encontraron 75 identificadores repetidos y esos son unicos, no pueden repetirse
+    """)
+    return
+
+
+@app.cell
+def _(datos):
+    datos.duplicated().sum()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    También hay 75 filas completamente duplicadas.
+    """)
     return
 
 
