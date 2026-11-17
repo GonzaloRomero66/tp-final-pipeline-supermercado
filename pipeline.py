@@ -656,6 +656,16 @@ def _(conexion_duckdb):
     return
 
 
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT *
+        FROM validos
+        LIMIT 20
+    """).df()
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -689,6 +699,109 @@ def _(conexion_duckdb):
         SELECT *
         FROM rechazados
         LIMIT 20
+    """).df()
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT motivo_rechazo, COUNT(*) AS cantidad
+        FROM rechazados
+        GROUP BY motivo_rechazo
+        ORDER BY cantidad DESC
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Estamos viendo los 947 registros que fueron rechazados y la cantidad de los motivos
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT fecha, COUNT(*) AS cantidad
+        FROM rechazados
+        WHERE motivo_rechazo LIKE '%Fecha inválida%'
+        GROUP BY fecha
+        ORDER BY cantidad DESC
+        LIMIT 20
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Estamos viendo las fechas que estan mal
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT
+            fecha AS fecha_original,
+            STRFTIME(
+                TRY_STRPTIME(fecha, '%d/%m/%Y'),
+                '%Y-%m-%d'
+            ) AS fecha_corregida
+        FROM rechazados
+        WHERE motivo_rechazo LIKE '%Fecha inválida%'
+        LIMIT 10
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Es una vista previa de como se veria las fechas corregidas
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TABLE rechazados_limpios AS
+        SELECT
+            * REPLACE (
+                CASE
+                    WHEN TRY_STRPTIME(fecha, '%d/%m/%Y') IS NOT NULL
+                    THEN STRFTIME(
+                        TRY_STRPTIME(fecha, '%d/%m/%Y'),
+                        '%Y-%m-%d'
+                    )
+                    ELSE fecha
+                END AS fecha
+            )
+        FROM rechazados
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Se corrigieron los formatos de fechas que estaban mal
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT fecha
+        FROM rechazados_limpios
+        WHERE TRY_STRPTIME(fecha, '%Y-%m-%d') IS NULL
+        LIMIT 10
     """).df()
     return
 
