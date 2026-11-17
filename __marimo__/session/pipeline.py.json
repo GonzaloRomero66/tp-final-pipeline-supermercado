@@ -834,6 +834,123 @@
         }
       ],
       "console": []
+    },
+    {
+      "id": "lDlD",
+      "code_hash": "a9510bdaabcfa10ba578d9badd8fbb24",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;_duckdb.DuckDBPyConnection object at 0x000001FBA83DD290&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DZIl",
+      "code_hash": "569700077e241ba0cbb458b75c81cc7f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Se cre\u00f3 una tabla temporal llamada movimientos_clasificados para aplicar las 8 reglas de validaci\u00f3n a los registros originales. El proceso identifica los posibles errores, como identificadores duplicados, fechas incorrectas, sucursales no v\u00e1lidas, cantidades negativas y costos faltantes. Los problemas encontrados se registran en una nueva columna llamada motivo_rechazo, permitiendo identificar qu\u00e9 registros cumplen las condiciones y cu\u00e1les necesitan revisi\u00f3n.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vZlP",
+      "code_hash": "ba4b4cdff3f6535eeb5d284f56c67a26",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='vZlP-0' random-id='efdf4eb1-d7a6-c405-aeaa-ef5b78468022'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;total&#92;&quot;:2575,&#92;&quot;validos&#92;&quot;:1628,&#92;&quot;rechazados&#92;&quot;:947}]&quot;' data-total-rows='1' data-total-columns='3' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;total&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;validos&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;rechazados&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "YZzV",
+      "code_hash": "286359e66ca565a8a06cf0455e402f67",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Aca estamos mostrando los registros que fueron rechazados y los que fueron validos</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nbsw",
+      "code_hash": "22e8def10abc3972f3c55c60cdcf4fb8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;_duckdb.DuckDBPyConnection object at 0x000001FBA83DD290&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qpSQ",
+      "code_hash": "ff116e1d7ffda1b47acd4f4f02a4b74d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Creamos una tabla independiente donde estan los registros validos</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PqIf",
+      "code_hash": "aa269a745a8631b91a3faac920efe0ba",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;_duckdb.DuckDBPyConnection object at 0x000001FBA83DD290&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "zqkk",
+      "code_hash": "7718d41b088cc0aef410f374b4869a85",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Creamos esta otra tabla independiente donde estan los registros rechazados y el motivo del porque fueron rechazados</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PAMa",
+      "code_hash": "3d97dc48409cc32017eafd43ec391344",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='PAMa-0' random-id='2dc00b86-abad-312b-8958-7d87ccf1cdf5'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000115&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-01-01&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P03&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Arroz 1kg&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Almacen&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot; Sucursal Sur&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:34,&#92;&quot;costo_unitario&#92;&quot;:1800.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Molinos&#92;&quot;,&#92;&quot;repeticiones_id&#92;&quot;:1,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;Sucursal inv&#92;&#92;u00e1lida&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000200&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-01-25&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P03&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Arroz 1kg&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Almacen&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:7,&#92;&quot;costo_unitario&#92;&quot;:1800.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Molinos&#92;&quot;,&#92;&quot;repeticiones_id&#92;&quot;:2,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;ID duplicado&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000200&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-01-25&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P03&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Arroz 1kg&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Almacen&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:7,&#92;&quot;costo_unitario&#92;&quot;:1800.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Molinos&#92;&quot;,&#92;&quot;repeticiones_id&#92;&quot;:2,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;ID duplicado&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000313&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;10/06/2024&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P02&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Yogur&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Lacteos&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:46,&#92;&quot;costo_unitario&#92;&quot;:650.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;LaSerenisima&#92;&quot;,&#92;&quot;repeticiones_id&#92;&quot;:1,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;Fecha inv&#92;&#92;u00e1lida&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000322&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-05-20&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P10&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Lavandina&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Limpieza&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;merma&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:33,&#92;&quot;costo_unitario&#92;&quot;:NaN,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Ala&#92;&quot;,&#92;&quot;repeticiones_id&#92;&quot;:1,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;Costo inv&#92;&#92;u00e1lido&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000336&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-07-07&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P09&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Detergente&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Limpieza&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;VENTA &#92;&quot;,&#92;&quot;cantidad&#92;&quot;:21,&#92;&quot;costo_unitario&#92;&quot;:2800.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Ala&#92;&quot;,&#92;&quot;repeticiones_id&#92;&quot;:1,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;Tipo de movimiento inv&#92;&#92;u00e1lido&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000349&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-09-25&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P09&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Detergente&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Limpieza&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Sur&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot; INGRESO&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:46,&#92;&quot;costo_unitario&#92;&quot;:2800.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Ala&#92;&quot;,&#92;&quot;repeticiones_id&#92;&quot;:1,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;Tipo de movimiento inv&#92;&#92;u00e1lido&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000373&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-10-12&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P03&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Arroz 1kg&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Almacen&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;VENTA&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:8,&#92;&quot;costo_unitario&#92;&quot;:1800.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Molinos&#92;&quot;,&#92;&quot;repeticiones_id&#92;&quot;:1,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;Tipo de movimiento inv&#92;&#92;u00e1lido&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000445&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-01-07&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P10&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Lavandina&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Limpieza&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;  Sucursal Norte &#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:30,&#92;&quot;costo_unitario&#92;&quot;:1500.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Ala&#92;&quot;,&#92;&quot;repeticiones_id&#92;&quot;:1,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;Sucursal inv&#92;&#92;u00e1lida&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000481&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;22/08/2024&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P07&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Manzana kg&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Frutas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:8,&#92;&quot;costo_unitario&#92;&quot;:2100.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Verdurama&#92;&quot;,&#92;&quot;repeticiones_id&#92;&quot;:1,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;Fecha inv&#92;&#92;u00e1lida&#92;&quot;}]&quot;' data-total-rows='20' data-total-columns='12' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;id_movimiento&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;fecha&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;id_producto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;producto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;categoria&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;sucursal&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;tipo_movimiento&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;cantidad&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;costo_unitario&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;proveedor&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;repeticiones_id&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;motivo_rechazo&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
     }
   ]
 }

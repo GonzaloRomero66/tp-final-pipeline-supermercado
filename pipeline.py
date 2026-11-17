@@ -538,5 +538,160 @@ def _(mo):
     return
 
 
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TEMP TABLE movimientos_clasificados AS
+
+        WITH base AS (
+            SELECT *,
+                COUNT(*) OVER (
+                    PARTITION BY id_movimiento
+                ) AS repeticiones_id
+            FROM raw_movimientos
+        )
+
+        SELECT *,
+            CONCAT_WS(' | ',
+
+                CASE
+                    WHEN id_movimiento IS NULL
+                      OR TRIM(id_movimiento) = ''
+                    THEN 'ID vacío'
+                END,
+
+                CASE
+                    WHEN TRIM(id_movimiento) <> ''
+                      AND repeticiones_id > 1
+                    THEN 'ID duplicado'
+                END,
+
+                CASE
+                    WHEN fecha IS NULL
+                      OR TRY_STRPTIME(fecha, '%Y-%m-%d') IS NULL
+                    THEN 'Fecha inválida'
+                END,
+
+                CASE
+                    WHEN id_producto IS NULL
+                      OR TRIM(id_producto) = ''
+                    THEN 'ID de producto vacío'
+                END,
+
+                CASE
+                    WHEN sucursal IS NULL
+                      OR sucursal NOT IN (
+                        'Sucursal Norte',
+                        'Sucursal Sur',
+                        'Sucursal Centro'
+                      )
+                    THEN 'Sucursal inválida'
+                END,
+
+                CASE
+                    WHEN tipo_movimiento IS NULL
+                      OR tipo_movimiento NOT IN (
+                        'venta', 'ingreso', 'merma'
+                      )
+                    THEN 'Tipo de movimiento inválido'
+                END,
+
+                CASE
+                    WHEN cantidad IS NULL OR cantidad <= 0
+                    THEN 'Cantidad inválida'
+                END,
+
+                CASE
+                    WHEN costo_unitario IS NULL OR costo_unitario < 0
+                    THEN 'Costo inválido'
+                END
+
+            ) AS motivo_rechazo
+
+        FROM base
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Se creó una tabla temporal llamada movimientos_clasificados para aplicar las 8 reglas de validación a los registros originales. El proceso identifica los posibles errores, como identificadores duplicados, fechas incorrectas, sucursales no válidas, cantidades negativas y costos faltantes. Los problemas encontrados se registran en una nueva columna llamada motivo_rechazo, permitiendo identificar qué registros cumplen las condiciones y cuáles necesitan revisión.
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT
+            COUNT(*) AS total,
+            COUNT(*) FILTER (
+                WHERE motivo_rechazo = ''
+            ) AS validos,
+            COUNT(*) FILTER (
+                WHERE motivo_rechazo <> ''
+            ) AS rechazados
+        FROM movimientos_clasificados
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Aca estamos mostrando los registros que fueron rechazados y los que fueron validos
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TABLE validos AS
+        SELECT *
+        FROM movimientos_clasificados
+        WHERE motivo_rechazo = ''
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Creamos una tabla independiente donde estan los registros validos
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TABLE rechazados AS
+        SELECT *
+        FROM movimientos_clasificados
+        WHERE motivo_rechazo <> ''
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Creamos esta otra tabla independiente donde estan los registros rechazados y el motivo del porque fueron rechazados
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT *
+        FROM rechazados
+        LIMIT 20
+    """).df()
+    return
+
+
 if __name__ == "__main__":
     app.run()
