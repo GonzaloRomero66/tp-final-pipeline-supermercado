@@ -16,7 +16,7 @@ def _():
     import sqlite3 
     import pandas as pd
 
-    conexion = sqlite3.connect("datos/stock.sqlite")
+    conexion = sqlite3.connect("file:datos/stock.sqlite?mode=ro", uri=True)
     return conexion, pd
 
 
@@ -35,16 +35,6 @@ def _(conexion, pd):
         "PRAGMA table_info(movimientos)", conexion
     )
     columnas
-    return
-
-
-@app.cell
-def _():
-    return
-
-
-@app.cell
-def _():
     return
 
 
@@ -77,24 +67,8 @@ def _(conexion, pd):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Estamos sumando las cantidades de valores nulos de cada columna
+    Estamos sumando las cantidades de valores nulos de cada columna. Ojo: hay 130 costos, 127 productos y 152 categorias nulas
     """)
-    return
-
-
-@app.cell
-def _():
-    return
-
-
-@app.cell
-def _(conexion, mo):
-    _df = mo.sql(
-        f"""
-        SELECT * FROM
-        """,
-        engine=conexion
-    )
     return
 
 
@@ -165,7 +139,7 @@ def _(datos):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Categoria esta todo bien escrito
+    Categoria esta bien escrita, pero value_counts() no cuenta los nulos: hay 152 categorias vacias (NaN)
     """)
     return
 
@@ -179,7 +153,7 @@ def _(datos):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    En producto esta todo bien escrito los respectivos nombres
+    Los nombres de producto estan bien escritos, pero hay 127 productos vacios (NaN) que value_counts() no muestra
     """)
     return
 
@@ -213,7 +187,7 @@ def _(datos):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    El formato de las fechas es con -
+    Hay 260 fechas con / (formato dd/mm/yyyy) y el resto con - (yyyy-mm-dd)
     """)
     return
 
@@ -317,26 +291,29 @@ def _(mo):
     return
 
 
+
 @app.cell
 def _():
     import duckdb
-    conexion_duckdb = duckdb.connect("datos/stock.sqlite")
+
+    conexion_duckdb = duckdb.connect("datos/supermercado.duckdb")
     return (conexion_duckdb,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Esto crea o abre nuestra base de datos DuckDB en la carpeta datos
+    Creamos nuestra base DuckDB en `datos/supermercado.duckdb`. Es un archivo propio, distinto del SQLite original, asi que el original no se modifica
     """)
     return
 
 
 @app.cell
-def _(conexion_duckdb):
+def _(conexion_duckdb, datos):
+    conexion_duckdb.register("datos_origen", datos)
     conexion_duckdb.execute("""
         CREATE OR REPLACE TABLE raw_movimientos AS
-        SELECT * FROM datos
+        SELECT * FROM datos_origen
     """)
     return
 
@@ -344,7 +321,7 @@ def _(conexion_duckdb):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Aca creamos la tabla raw_movimientos y copiamos todos los datos
+    Creamos raw_movimientos con los datos tal cual vienen del SQLite (sin transformar nada). `datos` es el DataFrame que leimos mas arriba en modo lectura
     """)
     return
 
@@ -538,85 +515,81 @@ def _(mo):
     return
 
 
+
 @app.cell
 def _(conexion_duckdb):
     conexion_duckdb.execute("""
-        CREATE OR REPLACE TEMP TABLE movimientos_clasificados AS
-
-        WITH base AS (
-            SELECT *,
-                COUNT(*) OVER (
-                    PARTITION BY id_movimiento
-                ) AS repeticiones_id
-            FROM raw_movimientos
-        )
-
-        SELECT *,
-            CONCAT_WS(' | ',
-
-                CASE
-                    WHEN id_movimiento IS NULL
-                      OR TRIM(id_movimiento) = ''
-                    THEN 'ID vacío'
-                END,
-
-                CASE
-                    WHEN TRIM(id_movimiento) <> ''
-                      AND repeticiones_id > 1
-                    THEN 'ID duplicado'
-                END,
-
-                CASE
-                    WHEN fecha IS NULL
-                      OR TRY_STRPTIME(fecha, '%Y-%m-%d') IS NULL
-                    THEN 'Fecha inválida'
-                END,
-
-                CASE
-                    WHEN id_producto IS NULL
-                      OR TRIM(id_producto) = ''
-                    THEN 'ID de producto vacío'
-                END,
-
-                CASE
-                    WHEN sucursal IS NULL
-                      OR sucursal NOT IN (
-                        'Sucursal Norte',
-                        'Sucursal Sur',
-                        'Sucursal Centro'
-                      )
-                    THEN 'Sucursal inválida'
-                END,
-
-                CASE
-                    WHEN tipo_movimiento IS NULL
-                      OR tipo_movimiento NOT IN (
-                        'venta', 'ingreso', 'merma'
-                      )
-                    THEN 'Tipo de movimiento inválido'
-                END,
-
-                CASE
-                    WHEN cantidad IS NULL OR cantidad <= 0
-                    THEN 'Cantidad inválida'
-                END,
-
-                CASE
-                    WHEN costo_unitario IS NULL OR costo_unitario < 0
-                    THEN 'Costo inválido'
-                END
-
-            ) AS motivo_rechazo
-
-        FROM base
-    """)
+        SELECT
+            COUNT(*) FILTER (WHERE producto IS NULL OR TRIM(producto) = '') AS productos_vacios,
+            COUNT(*) FILTER (WHERE categoria IS NULL OR TRIM(categoria) = '') AS categorias_vacias
+        FROM raw_movimientos
+    """).df()
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Se creó una tabla temporal llamada movimientos_clasificados para aplicar las 8 reglas de validación a los registros originales. El proceso identifica los posibles errores, como identificadores duplicados, fechas incorrectas, sucursales no válidas, cantidades negativas y costos faltantes. Los problemas encontrados se registran en una nueva columna llamada motivo_rechazo, permitiendo identificar qué registros cumplen las condiciones y cuáles necesitan revisión.
+    Hay 127 productos y 152 categorias vacias. Antes no las habiamos detectado porque value_counts() ignora los nulos. Vamos a agregar una regla nueva (la 9) para detectarlas
+    """)
+    return
+
+
+@app.cell
+def _():
+    def clasificar(origen):
+        """Devuelve un SELECT que agrega motivo_rechazo aplicando las 9 reglas.
+        Se usa dos veces: sobre raw_movimientos (punto 3) y sobre los
+        rechazados ya limpios (para revalidar todo en el punto 5)."""
+        return f"""
+        WITH base AS (
+            SELECT *,
+                COUNT(*) OVER (PARTITION BY id_movimiento) AS repeticiones_id
+            FROM {origen}
+        )
+        SELECT * EXCLUDE (repeticiones_id),
+            CONCAT_WS(' | ',
+                CASE WHEN id_movimiento IS NULL OR TRIM(id_movimiento) = ''
+                     THEN 'ID vacío' END,
+                CASE WHEN TRIM(id_movimiento) <> '' AND repeticiones_id > 1
+                     THEN 'ID duplicado' END,
+                CASE WHEN fecha IS NULL OR TRY_STRPTIME(fecha, '%Y-%m-%d') IS NULL
+                     THEN 'Fecha inválida' END,
+                CASE WHEN id_producto IS NULL OR TRIM(id_producto) = ''
+                     THEN 'ID de producto vacío' END,
+                CASE WHEN producto IS NULL OR TRIM(producto) = ''
+                       OR categoria IS NULL OR TRIM(categoria) = ''
+                     THEN 'Producto o categoría vacío' END,
+                CASE WHEN sucursal IS NULL
+                       OR sucursal NOT IN ('Sucursal Norte', 'Sucursal Sur', 'Sucursal Centro')
+                     THEN 'Sucursal inválida' END,
+                CASE WHEN tipo_movimiento IS NULL
+                       OR tipo_movimiento NOT IN ('venta', 'ingreso', 'merma')
+                     THEN 'Tipo de movimiento inválido' END,
+                CASE WHEN cantidad IS NULL OR cantidad <= 0
+                     THEN 'Cantidad inválida' END,
+                CASE WHEN costo_unitario IS NULL OR costo_unitario < 0
+                     THEN 'Costo inválido' END
+            ) AS motivo_rechazo
+        FROM base
+        """
+
+    return (clasificar,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Guardamos las 9 reglas en una funcion `clasificar()` para poder aplicar exactamente las mismas reglas dos veces: primero sobre los datos crudos y despues sobre los datos ya limpios (revalidacion)
+    """)
+    return
+
+
+@app.cell
+def _(clasificar, conexion_duckdb):
+    conexion_duckdb.execute(f"""
+        CREATE OR REPLACE TEMP TABLE movimientos_clasificados AS
+        {clasificar("raw_movimientos")}
     """)
     return
 
@@ -626,12 +599,8 @@ def _(conexion_duckdb):
     conexion_duckdb.execute("""
         SELECT
             COUNT(*) AS total,
-            COUNT(*) FILTER (
-                WHERE motivo_rechazo = ''
-            ) AS validos,
-            COUNT(*) FILTER (
-                WHERE motivo_rechazo <> ''
-            ) AS rechazados
+            COUNT(*) FILTER (WHERE motivo_rechazo = '') AS validos,
+            COUNT(*) FILTER (WHERE motivo_rechazo <> '') AS rechazados
         FROM movimientos_clasificados
     """).df()
     return
@@ -640,7 +609,7 @@ def _(conexion_duckdb):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Aca estamos mostrando los registros que fueron rechazados y los que fueron validos
+    Total de registros, cuantos son validos y cuantos rechazados con las 9 reglas
     """)
     return
 
@@ -649,27 +618,17 @@ def _(mo):
 def _(conexion_duckdb):
     conexion_duckdb.execute("""
         CREATE OR REPLACE TABLE validos AS
-        SELECT *
+        SELECT * EXCLUDE (motivo_rechazo)
         FROM movimientos_clasificados
         WHERE motivo_rechazo = ''
     """)
     return
 
 
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT *
-        FROM validos
-        LIMIT 20
-    """).df()
-    return
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Creamos una tabla independiente donde estan los registros validos
+    Tabla `validos`: los registros que pasaron las 9 reglas
     """)
     return
 
@@ -688,7 +647,7 @@ def _(conexion_duckdb):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Creamos esta otra tabla independiente donde estan los registros rechazados y el motivo del porque fueron rechazados
+    Tabla `rechazados`: los registros que fallaron al menos una regla, con `motivo_rechazo`
     """)
     return
 
@@ -696,283 +655,13 @@ def _(mo):
 @app.cell
 def _(conexion_duckdb):
     conexion_duckdb.execute("""
-        SELECT *
-        FROM rechazados
-        LIMIT 20
-    """).df()
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT motivo_rechazo, COUNT(*) AS cantidad
-        FROM rechazados
-        GROUP BY motivo_rechazo
-        ORDER BY cantidad DESC
-    """).df()
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Estamos viendo los 947 registros que fueron rechazados y la cantidad de los motivos
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT fecha, COUNT(*) AS cantidad
-        FROM rechazados
-        WHERE motivo_rechazo LIKE '%Fecha inválida%'
-        GROUP BY fecha
-        ORDER BY cantidad DESC
-        LIMIT 20
-    """).df()
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Estamos viendo las fechas que estan mal
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT
-            fecha AS fecha_original,
-            STRFTIME(
-                TRY_STRPTIME(fecha, '%d/%m/%Y'),
-                '%Y-%m-%d'
-            ) AS fecha_corregida
-        FROM rechazados
-        WHERE motivo_rechazo LIKE '%Fecha inválida%'
-        LIMIT 10
-    """).df()
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Es una vista previa de como se veria las fechas corregidas
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        CREATE OR REPLACE TABLE rechazados_limpios AS
-        SELECT
-            * REPLACE (
-                CASE
-                    WHEN TRY_STRPTIME(fecha, '%d/%m/%Y') IS NOT NULL
-                    THEN STRFTIME(
-                        TRY_STRPTIME(fecha, '%d/%m/%Y'),
-                        '%Y-%m-%d'
-                    )
-                    ELSE fecha
-                END AS fecha
-            )
-        FROM rechazados
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Se corrigieron los formatos de fechas que estaban mal
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT fecha
-        FROM rechazados_limpios
-        WHERE TRY_STRPTIME(fecha, '%Y-%m-%d') IS NULL
-        LIMIT 10
-    """).df()
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT tipo_movimiento, COUNT(*) AS cantidad
-        FROM rechazados_limpios
-        WHERE motivo_rechazo LIKE '%Tipo de movimiento inválido%'
-        GROUP BY tipo_movimiento
-        ORDER BY cantidad DESC
-    """).df()
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        CREATE OR REPLACE TABLE rechazados_limpios AS
-        SELECT
-            * REPLACE (
-                LOWER(TRIM(tipo_movimiento)) AS tipo_movimiento
-            )
-        FROM rechazados_limpios
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Esto corrige los espacios y las mayusculas
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT tipo_movimiento, COUNT(*) AS cantidad
-        FROM rechazados_limpios
-        GROUP BY tipo_movimiento
-    """).df()
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Aca podemos ver como quedarons los nombres de los tipo de movimientos corregidos
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT sucursal, COUNT(*) AS cantidad
-        FROM rechazados_limpios
-        WHERE motivo_rechazo LIKE '%Sucursal inválida%'
-        GROUP BY sucursal
-        ORDER BY cantidad DESC
-    """).df()
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Aca podemos ver que estan mal los nombres de las sucursales
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        CREATE OR REPLACE TABLE rechazados_limpios AS
-        SELECT
-            * REPLACE (
-                TRIM(sucursal) AS sucursal
-            )
-        FROM rechazados_limpios
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Aca estamos corrigiendo los nombres para que no haya espacio o que esten escritos de otra forma
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT costo_unitario, COUNT(*) AS cantidad
-        FROM rechazados_limpios
-        WHERE motivo_rechazo LIKE '%Costo inválido%'
-        GROUP BY costo_unitario
-        ORDER BY cantidad DESC
-    """).df()
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Aca podemos ver que hay 130 costos unitarios con valores nulos y no podemos todavia corregirlos porque no podemos inventar un valor o ponerlo solo en 0
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT cantidad, COUNT(*) AS cantidad_registros
-        FROM rechazados_limpios
-        WHERE motivo_rechazo LIKE '%Cantidad inválida%'
-        GROUP BY cantidad
-        ORDER BY cantidad
-    """).df()
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Aca podemos ver devuelta el problema, las cantidades son negativas, no se puede modificar o ponerlo en positivo porque puede cambiar el movimiento, por el momento se conservara tal y como esta
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT id_movimiento, COUNT(*) AS cantidad
-        FROM rechazados_limpios
-        WHERE motivo_rechazo LIKE '%ID duplicado%'
-        GROUP BY id_movimiento
-        ORDER BY cantidad DESC
-        LIMIT 10
-    """).df()
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Aca se puede ver los id de movimiento que estan duplicados
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT *
-        FROM rechazados_limpios
-        WHERE id_movimiento IN (
-            SELECT id_movimiento
-            FROM rechazados_limpios
-            WHERE motivo_rechazo LIKE '%ID duplicado%'
-            GROUP BY id_movimiento
-            HAVING COUNT(*) > 1
+        SELECT regla, COUNT(*) AS cantidad
+        FROM (
+            SELECT UNNEST(STRING_SPLIT(motivo_rechazo, ' | ')) AS regla
+            FROM rechazados
         )
-        ORDER BY id_movimiento
-        LIMIT 15
+        GROUP BY regla
+        ORDER BY cantidad DESC
     """).df()
     return
 
@@ -980,7 +669,7 @@ def _(conexion_duckdb):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Aca podemos ver que los id de movimiento que estan duplicados directamente son registro duplicados, osea todo es igual, asi que solo tendremos que borrar uno de cada uno o 2 dependiendo del caso de los que estaban repetidos 3 veces para que quede bien
+    Cantidad de registros rechazados por CADA regla (un registro puede fallar mas de una, por eso la suma supera el total de rechazados). Esto sirve para el informe
     """)
     return
 
@@ -988,57 +677,37 @@ def _(mo):
 @app.cell
 def _(conexion_duckdb):
     conexion_duckdb.execute("""
-        CREATE OR REPLACE TABLE rechazados_limpios AS
-        SELECT DISTINCT *
-        FROM rechazados_limpios
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Eliminamos todas las duplicaciones y solo queda 1 de cada 1
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT id_movimiento, COUNT(*) AS cantidad
-        FROM rechazados_limpios
-        GROUP BY id_movimiento
-        HAVING COUNT(*) > 1
-    """).df()
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Y como se puede ver ya no hay id de movimiento que se repita
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        CREATE OR REPLACE TABLE rechazados_limpios AS
         SELECT
-            * EXCLUDE (motivo_rechazo),
-            CONCAT_WS(' | ',
-                CASE
-                    WHEN costo_unitario IS NULL OR costo_unitario < 0
-                    THEN 'Costo inválido'
-                END,
-                CASE
-                    WHEN cantidad IS NULL OR cantidad <= 0
-                    THEN 'Cantidad inválida'
-                END
-            ) AS motivo_rechazo
-        FROM rechazados_limpios
+            id_producto,
+            COUNT(DISTINCT producto) AS nombres,
+            COUNT(DISTINCT categoria) AS categorias,
+            COUNT(DISTINCT costo_unitario) AS costos
+        FROM raw_movimientos
+        GROUP BY id_producto
+        ORDER BY id_producto
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Cada id_producto tiene un unico nombre, una unica categoria y un unico costo. Entonces podemos recuperar los valores vacios sin inventar nada: se completan con los del mismo id_producto
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TEMP TABLE catalogo_productos AS
+        SELECT
+            id_producto,
+            MAX(producto) AS producto,
+            MAX(categoria) AS categoria,
+            MAX(costo_unitario) AS costo_unitario
+        FROM raw_movimientos
+        GROUP BY id_producto
     """)
     return
 
@@ -1046,8 +715,85 @@ def _(conexion_duckdb):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Esto vuelve a evaluar los errores que todavía no pudimos solucionar. Los registros que ya corregimos dejarán de tener esos motivos
+    Armamos un catalogo con un solo producto, categoria y costo por id_producto (MAX ignora los nulos, asi que toma el valor que si existe)
     """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TEMP TABLE rechazados_normalizados AS
+        SELECT DISTINCT
+            r.id_movimiento,
+            COALESCE(
+                STRFTIME(TRY_STRPTIME(r.fecha, '%d/%m/%Y'), '%Y-%m-%d'),
+                r.fecha
+            ) AS fecha,
+            r.id_producto,
+            COALESCE(r.producto, c.producto) AS producto,
+            COALESCE(r.categoria, c.categoria) AS categoria,
+            TRIM(r.sucursal) AS sucursal,
+            LOWER(TRIM(r.tipo_movimiento)) AS tipo_movimiento,
+            ABS(r.cantidad) AS cantidad,
+            COALESCE(r.costo_unitario, c.costo_unitario) AS costo_unitario,
+            r.proveedor,
+            CONCAT_WS(', ',
+                CASE WHEN r.fecha LIKE '%/%' THEN 'fecha' END,
+                CASE WHEN r.sucursal <> TRIM(r.sucursal) THEN 'sucursal' END,
+                CASE WHEN r.tipo_movimiento <> LOWER(TRIM(r.tipo_movimiento)) THEN 'tipo' END,
+                CASE WHEN r.cantidad < 0 THEN 'cantidad (signo)' END,
+                CASE WHEN r.costo_unitario IS NULL AND c.costo_unitario IS NOT NULL THEN 'costo' END,
+                CASE WHEN r.producto IS NULL AND c.producto IS NOT NULL THEN 'producto' END,
+                CASE WHEN r.categoria IS NULL AND c.categoria IS NOT NULL THEN 'categoria' END
+            ) AS correcciones
+        FROM rechazados r
+        LEFT JOIN catalogo_productos c USING (id_producto)
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Limpieza de los rechazados en un solo paso:
+    - fecha: pasa de dd/mm/yyyy a yyyy-mm-dd
+    - sucursal: TRIM (solo tenia espacios de mas)
+    - tipo_movimiento: LOWER + TRIM (venian en mayuscula o con espacios)
+    - cantidad: ABS (los negativos son un error de signo; es un supuesto, queda registrado en `correcciones`)
+    - costo, producto y categoria vacios: se completan desde el catalogo por id_producto
+    - SELECT DISTINCT elimina las copias repetidas de los ID duplicados (eran filas identicas)
+    La columna `correcciones` deja constancia de que se le arreglo a cada registro
+    """)
+    return
+
+
+@app.cell
+def _(clasificar, conexion_duckdb):
+    conexion_duckdb.execute(f"""
+        CREATE OR REPLACE TABLE rechazados_limpios AS
+        {clasificar("rechazados_normalizados")}
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Creamos `rechazados_limpios` volviendo a aplicar las 9 reglas completas sobre los datos ya limpios. Si `motivo_rechazo` queda vacio, el registro quedo recuperado
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT
+            COUNT(*) AS total,
+            COUNT(*) FILTER (WHERE motivo_rechazo = '') AS recuperados,
+            COUNT(*) FILTER (WHERE motivo_rechazo <> '') AS pendientes
+        FROM rechazados_limpios
+    """).df()
     return
 
 
@@ -1066,7 +812,7 @@ def _(conexion_duckdb):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Ahora podemos ver que solo quedan costo invalido y cantidad invalida
+    Resultado de la limpieza: cuantos se recuperaron y, si quedo alguno pendiente, por que regla sigue fallando
     """)
     return
 
@@ -1074,15 +820,10 @@ def _(mo):
 @app.cell
 def _(conexion_duckdb):
     conexion_duckdb.execute("""
-        SELECT
-            COUNT(*) AS total,
-            COUNT(*) FILTER (
-                WHERE motivo_rechazo = ''
-            ) AS recuperados,
-            COUNT(*) FILTER (
-                WHERE motivo_rechazo <> ''
-            ) AS pendientes
+        SELECT id_movimiento, COUNT(*) AS cantidad
         FROM rechazados_limpios
+        GROUP BY id_movimiento
+        HAVING COUNT(*) > 1
     """).df()
     return
 
@@ -1090,7 +831,7 @@ def _(conexion_duckdb):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Aca podemos ver la cantidad de registros que pudimos recuperar y los que todavia siguen rechazados
+    Control: no debe devolver ninguna fila (ningun id_movimiento repetido)
     """)
     return
 
@@ -1100,7 +841,7 @@ def _(conexion_duckdb):
     conexion_duckdb.execute("""
         SELECT *
         FROM rechazados_limpios
-        WHERE motivo_rechazo = ''
+        WHERE correcciones <> ''
         LIMIT 10
     """).df()
     return
@@ -1109,72 +850,7 @@ def _(conexion_duckdb):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Aca podemos ver que los datos ya fueron corregidos aunque el de repeticiones de id sigue mal, eso se corregira ahora
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        CREATE OR REPLACE TABLE rechazados_limpios AS
-        SELECT
-            * REPLACE (
-                COUNT(*) OVER (
-                    PARTITION BY id_movimiento
-                ) AS repeticiones_id
-            )
-        FROM rechazados_limpios
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Se corrigio el problema de que las repeticiones de id seguia mostrando 2 en vez de 1
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        CREATE OR REPLACE TABLE tabla_final AS
-
-        SELECT *
-        FROM validos
-
-        UNION ALL
-
-        SELECT *
-        FROM rechazados_limpios
-        WHERE motivo_rechazo = ''
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Creamos la tabla final que tiene los registros recuperados mas los que ya estaban bien
-    """)
-    return
-
-
-@app.cell
-def _(conexion_duckdb):
-    conexion_duckdb.execute("""
-        SELECT COUNT(*) AS total_registros
-        FROM tabla_final
-    """).df()
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    Aca podemos ver que
+    Ejemplos de registros recuperados. La columna `correcciones` dice que se le arreglo a cada uno
     """)
     return
 

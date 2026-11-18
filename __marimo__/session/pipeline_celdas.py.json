@@ -1,0 +1,1179 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.25.2",
+    "script_metadata_hash": null
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "229ac3ea03db00bc90d96ae1cf1c551f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "cc586ed5e558960fe529f746a70a0009",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='vblA-0' random-id='e54109a6-4331-2ba2-6134-8e9e528355c3'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;name&#92;&quot;:&#92;&quot;movimientos&#92;&quot;}]&quot;' data-total-rows='1' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;name&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "9739b64cd8d7712497ef76d64592f7ea",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='bkHC-0' random-id='31253805-b180-7c7e-f066-3a7daf7d8065'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;cid&#92;&quot;:0,&#92;&quot;name&#92;&quot;:&#92;&quot;id_movimiento&#92;&quot;,&#92;&quot;type&#92;&quot;:&#92;&quot;TEXT&#92;&quot;,&#92;&quot;notnull&#92;&quot;:0,&#92;&quot;dflt_value&#92;&quot;:null,&#92;&quot;pk&#92;&quot;:0},{&#92;&quot;cid&#92;&quot;:1,&#92;&quot;name&#92;&quot;:&#92;&quot;fecha&#92;&quot;,&#92;&quot;type&#92;&quot;:&#92;&quot;TEXT&#92;&quot;,&#92;&quot;notnull&#92;&quot;:0,&#92;&quot;dflt_value&#92;&quot;:null,&#92;&quot;pk&#92;&quot;:0},{&#92;&quot;cid&#92;&quot;:2,&#92;&quot;name&#92;&quot;:&#92;&quot;id_producto&#92;&quot;,&#92;&quot;type&#92;&quot;:&#92;&quot;TEXT&#92;&quot;,&#92;&quot;notnull&#92;&quot;:0,&#92;&quot;dflt_value&#92;&quot;:null,&#92;&quot;pk&#92;&quot;:0},{&#92;&quot;cid&#92;&quot;:3,&#92;&quot;name&#92;&quot;:&#92;&quot;producto&#92;&quot;,&#92;&quot;type&#92;&quot;:&#92;&quot;TEXT&#92;&quot;,&#92;&quot;notnull&#92;&quot;:0,&#92;&quot;dflt_value&#92;&quot;:null,&#92;&quot;pk&#92;&quot;:0},{&#92;&quot;cid&#92;&quot;:4,&#92;&quot;name&#92;&quot;:&#92;&quot;categoria&#92;&quot;,&#92;&quot;type&#92;&quot;:&#92;&quot;TEXT&#92;&quot;,&#92;&quot;notnull&#92;&quot;:0,&#92;&quot;dflt_value&#92;&quot;:null,&#92;&quot;pk&#92;&quot;:0},{&#92;&quot;cid&#92;&quot;:5,&#92;&quot;name&#92;&quot;:&#92;&quot;sucursal&#92;&quot;,&#92;&quot;type&#92;&quot;:&#92;&quot;TEXT&#92;&quot;,&#92;&quot;notnull&#92;&quot;:0,&#92;&quot;dflt_value&#92;&quot;:null,&#92;&quot;pk&#92;&quot;:0},{&#92;&quot;cid&#92;&quot;:6,&#92;&quot;name&#92;&quot;:&#92;&quot;tipo_movimiento&#92;&quot;,&#92;&quot;type&#92;&quot;:&#92;&quot;TEXT&#92;&quot;,&#92;&quot;notnull&#92;&quot;:0,&#92;&quot;dflt_value&#92;&quot;:null,&#92;&quot;pk&#92;&quot;:0},{&#92;&quot;cid&#92;&quot;:7,&#92;&quot;name&#92;&quot;:&#92;&quot;cantidad&#92;&quot;,&#92;&quot;type&#92;&quot;:&#92;&quot;INTEGER&#92;&quot;,&#92;&quot;notnull&#92;&quot;:0,&#92;&quot;dflt_value&#92;&quot;:null,&#92;&quot;pk&#92;&quot;:0},{&#92;&quot;cid&#92;&quot;:8,&#92;&quot;name&#92;&quot;:&#92;&quot;costo_unitario&#92;&quot;,&#92;&quot;type&#92;&quot;:&#92;&quot;REAL&#92;&quot;,&#92;&quot;notnull&#92;&quot;:0,&#92;&quot;dflt_value&#92;&quot;:null,&#92;&quot;pk&#92;&quot;:0},{&#92;&quot;cid&#92;&quot;:9,&#92;&quot;name&#92;&quot;:&#92;&quot;proveedor&#92;&quot;,&#92;&quot;type&#92;&quot;:&#92;&quot;TEXT&#92;&quot;,&#92;&quot;notnull&#92;&quot;:0,&#92;&quot;dflt_value&#92;&quot;:null,&#92;&quot;pk&#92;&quot;:0}]&quot;' data-total-rows='10' data-total-columns='6' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;cid&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;name&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;type&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;notnull&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;dflt_value&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;pk&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "f39c3bc94a7a4c63d02187fd12e82fb6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='lEQa-0' random-id='543aebb7-5824-726e-2ea4-e619e7e49611'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;total&#92;&quot;:2575}]&quot;' data-total-rows='1' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;total&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "5b52bb6997d2bb76021325f200a5e97f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Etamos contando la cantidad de registros que serian filas en la tabla movimientos</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "4b4c5fd0dfee5d326a82898eff8543ee",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='Xref-0' random-id='80f43abd-098b-5ac4-3518-48e7d46c0fba'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Index0&#92;&quot;:&#92;&quot;id_movimiento&#92;&quot;,&#92;&quot;value&#92;&quot;:0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;fecha&#92;&quot;,&#92;&quot;value&#92;&quot;:0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;id_producto&#92;&quot;,&#92;&quot;value&#92;&quot;:0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;producto&#92;&quot;,&#92;&quot;value&#92;&quot;:127},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;categoria&#92;&quot;,&#92;&quot;value&#92;&quot;:152},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;sucursal&#92;&quot;,&#92;&quot;value&#92;&quot;:0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;tipo_movimiento&#92;&quot;,&#92;&quot;value&#92;&quot;:0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;cantidad&#92;&quot;,&#92;&quot;value&#92;&quot;:0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;costo_unitario&#92;&quot;,&#92;&quot;value&#92;&quot;:130},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;proveedor&#92;&quot;,&#92;&quot;value&#92;&quot;:0}]&quot;' data-total-rows='10' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;value&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;Index0&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "68636aba7efbe71463e341aa17404671",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Estamos sumando las cantidades de valores nulos de cada columna. Ojo: hay 130 costos, 127 productos y 152 categorias nulas</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "ce559aa38d69c7a7947422bf49be8552",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='BYtC-0' random-id='74d34205-6d4e-7234-d4dd-d016d178d651'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Index0&#92;&quot;:4,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000005&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-09-28&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P03&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Arroz 1kg&#92;&quot;,&#92;&quot;categoria&#92;&quot;:NaN,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:41,&#92;&quot;costo_unitario&#92;&quot;:1800.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Molinos&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:6,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000007&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-03-26&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P06&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Agua 1.5L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;ingreso&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:16,&#92;&quot;costo_unitario&#92;&quot;:NaN,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:7,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000008&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-06-24&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P03&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Arroz 1kg&#92;&quot;,&#92;&quot;categoria&#92;&quot;:NaN,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:47,&#92;&quot;costo_unitario&#92;&quot;:1800.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Molinos&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:9,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000010&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-10-18&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P09&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Detergente&#92;&quot;,&#92;&quot;categoria&#92;&quot;:NaN,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:42,&#92;&quot;costo_unitario&#92;&quot;:2800.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Ala&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:22,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000022&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-05-20&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P06&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Agua 1.5L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:NaN,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:51,&#92;&quot;costo_unitario&#92;&quot;:950.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:26,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000026&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-09-30&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P04&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Fideos 500g&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Almacen&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:13,&#92;&quot;costo_unitario&#92;&quot;:NaN,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Molinos&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:35,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000034&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-07-06&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P06&#92;&quot;,&#92;&quot;producto&#92;&quot;:NaN,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:48,&#92;&quot;costo_unitario&#92;&quot;:950.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:36,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000035&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-12-31&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P01&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Leche 1L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:NaN,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:9,&#92;&quot;costo_unitario&#92;&quot;:1100.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;LaSerenisima&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:43,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000042&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-11-17&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P07&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Manzana kg&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Frutas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:37,&#92;&quot;costo_unitario&#92;&quot;:NaN,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Verdurama&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:49,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000048&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-11-11&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P05&#92;&quot;,&#92;&quot;producto&#92;&quot;:NaN,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:3,&#92;&quot;costo_unitario&#92;&quot;:2300.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;}]&quot;' data-total-rows='10' data-total-columns='10' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;id_movimiento&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;fecha&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;id_producto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;producto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;categoria&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;sucursal&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;tipo_movimiento&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;cantidad&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;costo_unitario&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;proveedor&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;Index0&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "9589f00b00590f86c87760d10d8c7f0a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Estamos buscando filas que tengan al menos un dato vacio y muestra las primeras 10\nany() sirve para comprobar si al menos una condici\u00f3n se cumple.\naxis=1 indica que revise por filas, si usamos axis=0 estaremos haciendo que revise por columnas</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "a91ab3b86d9dfa5e3e3342b074beacc0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='Kclp-0' random-id='e1e834c0-582f-143f-0aa2-66bd11406d3e'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Index0&#92;&quot;:&#92;&quot;id_movimiento&#92;&quot;,&#92;&quot;value&#92;&quot;:2500},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;fecha&#92;&quot;,&#92;&quot;value&#92;&quot;:893},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;id_producto&#92;&quot;,&#92;&quot;value&#92;&quot;:10},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;producto&#92;&quot;,&#92;&quot;value&#92;&quot;:10},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;categoria&#92;&quot;,&#92;&quot;value&#92;&quot;:5},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;sucursal&#92;&quot;,&#92;&quot;value&#92;&quot;:12},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;tipo_movimiento&#92;&quot;,&#92;&quot;value&#92;&quot;:12},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;cantidad&#92;&quot;,&#92;&quot;value&#92;&quot;:109},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;costo_unitario&#92;&quot;,&#92;&quot;value&#92;&quot;:10},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;proveedor&#92;&quot;,&#92;&quot;value&#92;&quot;:5}]&quot;' data-total-rows='10' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;value&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;Index0&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "27a5e4468f985247153bf7989330e95a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">nunique() cuenta cu\u00e1ntos valores hay sin repetirlos e ignorando los nulos</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "c8a46057548becef150886db6ad8d767",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='Hstk-0' random-id='8a65a4b1-4ac5-5478-f698-eb503c36525b'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;count&#92;&quot;:825},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;count&#92;&quot;:823},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Sur&#92;&quot;,&#92;&quot;count&#92;&quot;:772},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte  &#92;&quot;,&#92;&quot;count&#92;&quot;:22},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot; Sucursal Sur&#92;&quot;,&#92;&quot;count&#92;&quot;:21},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot; Sucursal Centro&#92;&quot;,&#92;&quot;count&#92;&quot;:20},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro  &#92;&quot;,&#92;&quot;count&#92;&quot;:20},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;  Sucursal Centro &#92;&quot;,&#92;&quot;count&#92;&quot;:17},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot; Sucursal Norte&#92;&quot;,&#92;&quot;count&#92;&quot;:16},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Sur  &#92;&quot;,&#92;&quot;count&#92;&quot;:14}]&quot;' data-total-rows='12' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;count&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;sucursal&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "893cfc7383c5434c6ada26a7cdad4802",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">En la actividad se nos aclaro que solo son 3 sucursales pero como podemos ver algunas estan mal escritas y entonces se toman como si fueran 12</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "0b3e626c1206e8de2276dbd9ebf251f3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='iLit-0' random-id='b76c39f2-8bfd-768b-1cc6-5af457553760'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;count&#92;&quot;:1586},{&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;ingreso&#92;&quot;,&#92;&quot;count&#92;&quot;:545},{&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;merma&#92;&quot;,&#92;&quot;count&#92;&quot;:238},{&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;VENTA&#92;&quot;,&#92;&quot;count&#92;&quot;:52},{&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot; VENTA&#92;&quot;,&#92;&quot;count&#92;&quot;:46},{&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;VENTA &#92;&quot;,&#92;&quot;count&#92;&quot;:41},{&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot; INGRESO&#92;&quot;,&#92;&quot;count&#92;&quot;:16},{&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;INGRESO &#92;&quot;,&#92;&quot;count&#92;&quot;:14},{&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;MERMA&#92;&quot;,&#92;&quot;count&#92;&quot;:14},{&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;INGRESO&#92;&quot;,&#92;&quot;count&#92;&quot;:13}]&quot;' data-total-rows='12' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;count&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;tipo_movimiento&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "316ee49b212333ad7ea082cc8fad2d7f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Como podemos ver, pasa lo mismo con los tipos de movimientos por eso aparecen mal y hacen como si fuesen mas de lo que deberia</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "768be2d8a7aebab4c55f0f56c0b49119",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='ROlb-0' random-id='caf5d290-0197-4d3d-4317-d746d8a6a9f5'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;categoria&#92;&quot;:&#92;&quot;Limpieza&#92;&quot;,&#92;&quot;count&#92;&quot;:501},{&#92;&quot;categoria&#92;&quot;:&#92;&quot;Lacteos&#92;&quot;,&#92;&quot;count&#92;&quot;:496},{&#92;&quot;categoria&#92;&quot;:&#92;&quot;Frutas&#92;&quot;,&#92;&quot;count&#92;&quot;:486},{&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;count&#92;&quot;:482},{&#92;&quot;categoria&#92;&quot;:&#92;&quot;Almacen&#92;&quot;,&#92;&quot;count&#92;&quot;:458}]&quot;' data-total-rows='5' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;count&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;categoria&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "6e8c11eeaabc57fe7382ba468976e1e0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Categoria esta bien escrita, pero value_counts() no cuenta los nulos: hay 152 categorias vacias (NaN)</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "7f4793b1542e5146684b7643d2c2668a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='TqIu-0' random-id='16c739c9-1738-0a9d-885b-ce188e9a5ef3'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;producto&#92;&quot;:&#92;&quot;Banana kg&#92;&quot;,&#92;&quot;count&#92;&quot;:262},{&#92;&quot;producto&#92;&quot;:&#92;&quot;Leche 1L&#92;&quot;,&#92;&quot;count&#92;&quot;:255},{&#92;&quot;producto&#92;&quot;:&#92;&quot;Yogur&#92;&quot;,&#92;&quot;count&#92;&quot;:253},{&#92;&quot;producto&#92;&quot;:&#92;&quot;Lavandina&#92;&quot;,&#92;&quot;count&#92;&quot;:250},{&#92;&quot;producto&#92;&quot;:&#92;&quot;Gaseosa 2L&#92;&quot;,&#92;&quot;count&#92;&quot;:248},{&#92;&quot;producto&#92;&quot;:&#92;&quot;Detergente&#92;&quot;,&#92;&quot;count&#92;&quot;:248},{&#92;&quot;producto&#92;&quot;:&#92;&quot;Agua 1.5L&#92;&quot;,&#92;&quot;count&#92;&quot;:244},{&#92;&quot;producto&#92;&quot;:&#92;&quot;Fideos 500g&#92;&quot;,&#92;&quot;count&#92;&quot;:234},{&#92;&quot;producto&#92;&quot;:&#92;&quot;Manzana kg&#92;&quot;,&#92;&quot;count&#92;&quot;:229},{&#92;&quot;producto&#92;&quot;:&#92;&quot;Arroz 1kg&#92;&quot;,&#92;&quot;count&#92;&quot;:225}]&quot;' data-total-rows='10' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;count&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;producto&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "2b84716169a540c9387f1a61be73af00",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Los nombres de producto estan bien escritos, pero hay 127 productos vacios (NaN) que value_counts() no muestra</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "08977ab87f3ab755a0ae404580ac1765",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='DnEU-0' random-id='9addc065-7325-e51c-8caf-9e910f6ce250'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Index0&#92;&quot;:&#92;&quot;count&#92;&quot;,&#92;&quot;fecha&#92;&quot;:2575},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;unique&#92;&quot;,&#92;&quot;fecha&#92;&quot;:893},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;top&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-01-01&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;freq&#92;&quot;,&#92;&quot;fecha&#92;&quot;:11}]&quot;' data-total-rows='4' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;fecha&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;Index0&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "890277a1991a54ebfbcbb5545452604f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Estamos viendo un resumen, en este caso como las fechas estan en texto podemos mostrar informacion como la cantidad de registros valores unicos, etc</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "c35b182493f582e00b1254b987cc5a4d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>np.int64(260)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "e02aa661763722291578100d0c4ebc26",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>np.int64(2315)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "7d2576c2f0a12a72351c75e8242f38c4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 260 fechas con / (formato dd/mm/yyyy) y el resto con - (yyyy-mm-dd)</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "c1562eb637170b0b5ff093ebfc061e21",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='aLJB-0' random-id='30e2918e-dc9a-cb95-10b5-0d1370a8a2a9'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Index0&#92;&quot;:&#92;&quot;count&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:2575.0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;mean&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:28.43844660194175},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;std&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:20.94116145580905},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;min&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:-59.0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;25%&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:15.0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;50%&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:30.0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;75%&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:45.0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;max&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:60.0}]&quot;' data-total-rows='8' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;cantidad&quot;,[&quot;number&quot;,&quot;float64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;Index0&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "eda7b620cc51932a54b17f5d9c35c1c3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='nHfw-0' random-id='adad6cf7-2f18-371e-41e3-ccd4765a3f96'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Index0&#92;&quot;:44,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000043&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-09-14&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P02&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Yogur&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Lacteos&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:-38,&#92;&quot;costo_unitario&#92;&quot;:650.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;LaSerenisima&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:81,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000079&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-07-22&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P04&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Fideos 500g&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Almacen&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Sur&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:-6,&#92;&quot;costo_unitario&#92;&quot;:1200.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Molinos&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:179,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000176&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-01-03&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P06&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Agua 1.5L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;merma&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:-41,&#92;&quot;costo_unitario&#92;&quot;:950.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:198,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000194&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-07-19&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P01&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Leche 1L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Lacteos&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:-22,&#92;&quot;costo_unitario&#92;&quot;:1100.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;LaSerenisima&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:217,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000213&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-11-15&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P10&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Lavandina&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Limpieza&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Sur&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:-13,&#92;&quot;costo_unitario&#92;&quot;:1500.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Ala&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:239,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000233&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-03-17&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P06&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Agua 1.5L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:-25,&#92;&quot;costo_unitario&#92;&quot;:950.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:252,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000245&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-08-17&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P05&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Gaseosa 2L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:-52,&#92;&quot;costo_unitario&#92;&quot;:2300.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:253,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000246&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-11-23&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P09&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Detergente&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Limpieza&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Sur&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:-12,&#92;&quot;costo_unitario&#92;&quot;:2800.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Ala&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:262,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000255&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-04-05&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P05&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Gaseosa 2L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:-31,&#92;&quot;costo_unitario&#92;&quot;:2300.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;},{&#92;&quot;Index0&#92;&quot;:282,&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000273&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-07-15&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P06&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Agua 1.5L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:-23,&#92;&quot;costo_unitario&#92;&quot;:950.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;}]&quot;' data-total-rows='100' data-total-columns='10' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;id_movimiento&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;fecha&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;id_producto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;producto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;categoria&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;sucursal&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;tipo_movimiento&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;cantidad&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;costo_unitario&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;proveedor&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;Index0&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "f7d892a222f4dcef846c17c2b3692614",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay cantidades en cantidad negativa, ese es otro problema</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "cedd073432acd083c3cde8ee94f808c5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='AjVT-0' random-id='63441e52-49f6-3cb8-4188-8f1f74f416e5'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;Index0&#92;&quot;:&#92;&quot;count&#92;&quot;,&#92;&quot;costo_unitario&#92;&quot;:2445.0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;mean&#92;&quot;,&#92;&quot;costo_unitario&#92;&quot;:1602.8834355828221},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;std&#92;&quot;,&#92;&quot;costo_unitario&#92;&quot;:633.6793978722213},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;min&#92;&quot;,&#92;&quot;costo_unitario&#92;&quot;:650.0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;25%&#92;&quot;,&#92;&quot;costo_unitario&#92;&quot;:1100.0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;50%&#92;&quot;,&#92;&quot;costo_unitario&#92;&quot;:1500.0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;75%&#92;&quot;,&#92;&quot;costo_unitario&#92;&quot;:2100.0},{&#92;&quot;Index0&#92;&quot;:&#92;&quot;max&#92;&quot;,&#92;&quot;costo_unitario&#92;&quot;:2800.0}]&quot;' data-total-rows='8' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;costo_unitario&quot;,[&quot;number&quot;,&quot;float64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;Index0&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "890dad7be465f85976b776c44a59ae47",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">\u00bfQu\u00e9 encontramos?</span>\n<ul>\n<li>Hay 2575 movimientos en total.</li>\n<li>Solamente 2445 tienen costo registrado.</li>\n<li>Por lo tanto, hay 130 valores faltantes.</li>\n<li>Los costos existentes van de 650 a 2800.</li>\n<li>No aparecen costos negativos.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "NCOB",
+      "code_hash": "8a1ec2d90719aaebf34643ecef196361",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='NCOB-0' random-id='c5f0cae1-ee33-42cd-8b04-3b779fa0e40e'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;proveedor&#92;&quot;:&#92;&quot;LaSerenisima&#92;&quot;,&#92;&quot;count&#92;&quot;:535},{&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Ala&#92;&quot;,&#92;&quot;count&#92;&quot;:530},{&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Verdurama&#92;&quot;,&#92;&quot;count&#92;&quot;:515},{&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;,&#92;&quot;count&#92;&quot;:514},{&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Molinos&#92;&quot;,&#92;&quot;count&#92;&quot;:481}]&quot;' data-total-rows='5' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;count&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;proveedor&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aqbW",
+      "code_hash": "522bc04b04d8259250658becfcacd23f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">No encontramos ningun problema con los proveedores</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TRpd",
+      "code_hash": "3acd8b7df30739d5b85e019740df7e49",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='TRpd-0' random-id='bfcf63a0-1f4e-99c5-1091-fde363d3c512'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P08&#92;&quot;,&#92;&quot;count&#92;&quot;:278},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P01&#92;&quot;,&#92;&quot;count&#92;&quot;:268},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P02&#92;&quot;,&#92;&quot;count&#92;&quot;:267},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P10&#92;&quot;,&#92;&quot;count&#92;&quot;:265},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P09&#92;&quot;,&#92;&quot;count&#92;&quot;:265},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P05&#92;&quot;,&#92;&quot;count&#92;&quot;:259},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P06&#92;&quot;,&#92;&quot;count&#92;&quot;:255},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P04&#92;&quot;,&#92;&quot;count&#92;&quot;:248},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P07&#92;&quot;,&#92;&quot;count&#92;&quot;:237},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P03&#92;&quot;,&#92;&quot;count&#92;&quot;:233}]&quot;' data-total-rows='10' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;count&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;id_producto&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TXez",
+      "code_hash": "d01dd6e3621ee2fc838e41cac317708c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">\u00bfQu\u00e9 descubrimos?</span>\n<ul>\n<li>Hay 10 productos identificados.</li>\n<li>P08 es el que m\u00e1s aparece, con 278 movimientos.</li>\n<li>P03 es el que menos aparece, con 233 movimientos.</li>\n<li>Los 10 productos suman los 2575 registros.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dNNg",
+      "code_hash": "ecd4964d482010f8fabb34a5ad0e4d43",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>np.int64(75)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "yCnT",
+      "code_hash": "13d14afd172866f1a3de81b784b71c13",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Se encontraron 75 identificadores repetidos y esos son unicos, no pueden repetirse</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wlCL",
+      "code_hash": "2d1b9b186f5d1885e35568113045bd8e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>np.int64(75)</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kqZH",
+      "code_hash": "137c3f19cbdd6344cda443da1b7c6c58",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Tambi\u00e9n hay 75 filas completamente duplicadas.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wAgl",
+      "code_hash": "ae81142c0154534a58f3319804a39633",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "rEll",
+      "code_hash": "9a0b560e640126377df59f7d4cbb4df0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Creamos nuestra base DuckDB en <code>datos/supermercado.duckdb</code>. Es un archivo propio, distinto del SQLite original, asi que el original no se modifica</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dGlV",
+      "code_hash": "1e386321c2c013810c2ea5d729196da3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;_duckdb.DuckDBPyConnection object at 0x0000022CA1B19B00&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SdmI",
+      "code_hash": "44410536d75ac4f58ed3b6393fb8dc54",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Creamos raw_movimientos con los datos tal cual vienen del SQLite (sin transformar nada). <code>datos</code> es el DataFrame que leimos mas arriba en modo lectura</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lgWD",
+      "code_hash": "ccfd1b1842d51e87ffc96dba7532208b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[2575]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "yOPj",
+      "code_hash": "94ffa860e9f531307a1544305c861bba",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='yOPj-0' random-id='18540071-cafb-bfe9-01fc-d9af1d4d2936'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;column_name&#92;&quot;:&#92;&quot;id_movimiento&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;fecha&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;id_producto&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;producto&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;categoria&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;sucursal&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;tipo_movimiento&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;cantidad&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;BIGINT&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;costo_unitario&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;DOUBLE&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null},{&#92;&quot;column_name&#92;&quot;:&#92;&quot;proveedor&#92;&quot;,&#92;&quot;column_type&#92;&quot;:&#92;&quot;VARCHAR&#92;&quot;,&#92;&quot;null&#92;&quot;:&#92;&quot;YES&#92;&quot;,&#92;&quot;key&#92;&quot;:null,&#92;&quot;default&#92;&quot;:null,&#92;&quot;extra&#92;&quot;:null}]&quot;' data-total-rows='10' data-total-columns='6' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;column_name&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;column_type&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;null&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;key&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;default&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;extra&quot;,[&quot;string&quot;,&quot;object&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "fwwy",
+      "code_hash": "f0c7bacafaa23ebcc1b24dc953d1bb51",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[0]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "LJZf",
+      "code_hash": "edd0c60f1a97670711b83297fcb20e57",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Estamos verificando que el id_movimiento no este vacio</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "urSm",
+      "code_hash": "34f942dcbde8bfb0d2c14f23e5ad2bfe",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[75]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "jxvo",
+      "code_hash": "561569b886a67165144309218c82d4b3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Estan los 75 id_movimientos que se repiten</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "mWxS",
+      "code_hash": "ab52228d86bf908ee07b92a7aac455dc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[260]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "CcZR",
+      "code_hash": "edd880968cd7cd270c6bd5c31fe2e236",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 260 fechas que no cumples el formato %Y-%m-%d</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "YWSi",
+      "code_hash": "df758a40979de383be35f564dd495b63",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[0]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "zlud",
+      "code_hash": "5a308a3b300fdcd88a6690aed60b12fb",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">No hay ningun id_producto que este vacio</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "tZnO",
+      "code_hash": "61a661280cc86a4b7ed3f35c183ad332",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='tZnO-0' random-id='7d8ff082-4c36-f4ea-216a-67973407d969'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;  Sucursal Centro &#92;&quot;,&#92;&quot;count_star()&#92;&quot;:17},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;  Sucursal Norte &#92;&quot;,&#92;&quot;count_star()&#92;&quot;:13},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;  Sucursal Sur &#92;&quot;,&#92;&quot;count_star()&#92;&quot;:12},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot; Sucursal Centro&#92;&quot;,&#92;&quot;count_star()&#92;&quot;:20},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot; Sucursal Norte&#92;&quot;,&#92;&quot;count_star()&#92;&quot;:16},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot; Sucursal Sur&#92;&quot;,&#92;&quot;count_star()&#92;&quot;:21},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;count_star()&#92;&quot;:823},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro  &#92;&quot;,&#92;&quot;count_star()&#92;&quot;:20},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;count_star()&#92;&quot;:825},{&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte  &#92;&quot;,&#92;&quot;count_star()&#92;&quot;:22}]&quot;' data-total-rows='12' data-total-columns='2' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;sucursal&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;count_star()&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xvXZ",
+      "code_hash": "1e50c72160788232170f46afc78a0f7e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Aca podemos ver devuelta que hay distintos nombres de sucursales, habra que corregirlos</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "CLip",
+      "code_hash": "1ba9a62499f28eb83be89e41223d9b92",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[155]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "YECM",
+      "code_hash": "1b06605fa6a477ff9725af2fed802de0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 155 que tienen espacios adicionales o diferencias de escrituras de Sucursal Norte, Sucursal Sur, Sucursal Centro</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "cEAS",
+      "code_hash": "2908260bfd6a13a5b7e1def0714b99a5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[206]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iXej",
+      "code_hash": "db1c4d9fabb61a4435da3d25127d831d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 206 registros que su tipo de movimiento no coincide con venta, ingreso o merma</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "EJmg",
+      "code_hash": "d9238aab58787d7fa9368ab3a8434f73",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[100]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "UmEG",
+      "code_hash": "e7b9952a0c443573f6e9f14abf585c5f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 100 registros con cantidad menor o igual que 0</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vEBW",
+      "code_hash": "ab547fb5f21f282f0bcc562456157769",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[130]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kLmu",
+      "code_hash": "e00369fa387d0e0777acf88638ed5490",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 130 registros que tienen un costo unitario nulo</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "IpqN",
+      "code_hash": "48b4a4e75a44e701346ca264168ac658",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='IpqN-0' random-id='9f3bb7c1-291d-d1ad-534d-272f777c0d71'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;productos_vacios&#92;&quot;:127,&#92;&quot;categorias_vacias&#92;&quot;:152}]&quot;' data-total-rows='1' data-total-columns='2' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;productos_vacios&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;categorias_vacias&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dxZZ",
+      "code_hash": "840d0603b55f514c00677c9ad2589624",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Hay 127 productos y 152 categorias vacias. Antes no las habiamos detectado porque value_counts() ignora los nulos. Vamos a agregar una regla nueva (la 9) para detectarlas</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dlnW",
+      "code_hash": "d9d1db2ee55679e3caed3d0e4e14869f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TTti",
+      "code_hash": "20c205f208da09ab4eeb1c8b03c0eddc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Guardamos las 9 reglas en una funcion <code>clasificar()</code> para poder aplicar exactamente las mismas reglas dos veces: primero sobre los datos crudos y despues sobre los datos ya limpios (revalidacion)</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RKFZ",
+      "code_hash": "ef7c9635c63388d3b7507bbded56c409",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;_duckdb.DuckDBPyConnection object at 0x0000022CA1B19B00&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "IaQp",
+      "code_hash": "ddaf8105a2af441a7b0141d96340bc07",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='IaQp-0' random-id='61de076c-167a-1de6-da0a-9a514c900001'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;total&#92;&quot;:2575,&#92;&quot;validos&#92;&quot;:1357,&#92;&quot;rechazados&#92;&quot;:1218}]&quot;' data-total-rows='1' data-total-columns='3' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;total&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;validos&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;rechazados&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "IWgg",
+      "code_hash": "81758cb1668a129819a9fad6db32489a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Total de registros, cuantos son validos y cuantos rechazados con las 9 reglas</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "fCoF",
+      "code_hash": "fe58ddd51c7cfbc949e03b5b2633424c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;_duckdb.DuckDBPyConnection object at 0x0000022CA1B19B00&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "LkGn",
+      "code_hash": "e18f440f9b60f69f650cab1d493ed689",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Tabla <code>validos</code>: los registros que pasaron las 9 reglas</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "zVRe",
+      "code_hash": "aa269a745a8631b91a3faac920efe0ba",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;_duckdb.DuckDBPyConnection object at 0x0000022CA1B19B00&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "woaO",
+      "code_hash": "81928bafa1672138832285b0bfc03a25",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Tabla <code>rechazados</code>: los registros que fallaron al menos una regla, con <code>motivo_rechazo</code></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "HnMC",
+      "code_hash": "52e50b36a9a842e4cb44294ffec1ba7f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='HnMC-0' random-id='69ef8250-2ab6-8b9a-ba43-3aa02d88d95d'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;regla&#92;&quot;:&#92;&quot;Producto o categor&#92;&#92;u00eda vac&#92;&#92;u00edo&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:279},{&#92;&quot;regla&#92;&quot;:&#92;&quot;Fecha inv&#92;&#92;u00e1lida&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:260},{&#92;&quot;regla&#92;&quot;:&#92;&quot;Tipo de movimiento inv&#92;&#92;u00e1lido&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:206},{&#92;&quot;regla&#92;&quot;:&#92;&quot;Sucursal inv&#92;&#92;u00e1lida&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:155},{&#92;&quot;regla&#92;&quot;:&#92;&quot;ID duplicado&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:148},{&#92;&quot;regla&#92;&quot;:&#92;&quot;Costo inv&#92;&#92;u00e1lido&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:130},{&#92;&quot;regla&#92;&quot;:&#92;&quot;Cantidad inv&#92;&#92;u00e1lida&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:100}]&quot;' data-total-rows='7' data-total-columns='2' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;regla&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;cantidad&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wadT",
+      "code_hash": "406aaf54d17dbd645cf527012cebd66d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Cantidad de registros rechazados por CADA regla (un registro puede fallar mas de una, por eso la suma supera el total de rechazados). Esto sirve para el informe</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "VCRE",
+      "code_hash": "910c72a0db9a1fbe6a9232a59402e79a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='VCRE-0' random-id='acc8bb87-56f5-c2a1-e2fd-45645387bf14'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P01&#92;&quot;,&#92;&quot;nombres&#92;&quot;:1,&#92;&quot;categorias&#92;&quot;:1,&#92;&quot;costos&#92;&quot;:1},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P02&#92;&quot;,&#92;&quot;nombres&#92;&quot;:1,&#92;&quot;categorias&#92;&quot;:1,&#92;&quot;costos&#92;&quot;:1},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P03&#92;&quot;,&#92;&quot;nombres&#92;&quot;:1,&#92;&quot;categorias&#92;&quot;:1,&#92;&quot;costos&#92;&quot;:1},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P04&#92;&quot;,&#92;&quot;nombres&#92;&quot;:1,&#92;&quot;categorias&#92;&quot;:1,&#92;&quot;costos&#92;&quot;:1},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P05&#92;&quot;,&#92;&quot;nombres&#92;&quot;:1,&#92;&quot;categorias&#92;&quot;:1,&#92;&quot;costos&#92;&quot;:1},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P06&#92;&quot;,&#92;&quot;nombres&#92;&quot;:1,&#92;&quot;categorias&#92;&quot;:1,&#92;&quot;costos&#92;&quot;:1},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P07&#92;&quot;,&#92;&quot;nombres&#92;&quot;:1,&#92;&quot;categorias&#92;&quot;:1,&#92;&quot;costos&#92;&quot;:1},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P08&#92;&quot;,&#92;&quot;nombres&#92;&quot;:1,&#92;&quot;categorias&#92;&quot;:1,&#92;&quot;costos&#92;&quot;:1},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P09&#92;&quot;,&#92;&quot;nombres&#92;&quot;:1,&#92;&quot;categorias&#92;&quot;:1,&#92;&quot;costos&#92;&quot;:1},{&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P10&#92;&quot;,&#92;&quot;nombres&#92;&quot;:1,&#92;&quot;categorias&#92;&quot;:1,&#92;&quot;costos&#92;&quot;:1}]&quot;' data-total-rows='10' data-total-columns='4' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;id_producto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;nombres&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;categorias&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;costos&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "hgqU",
+      "code_hash": "a3cd79cd8c69ef6f6c864bbb0ab9ed6e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Cada id_producto tiene un unico nombre, una unica categoria y un unico costo. Entonces podemos recuperar los valores vacios sin inventar nada: se completan con los del mismo id_producto</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PSUk",
+      "code_hash": "06dfe5e27b251dd3cdb4a800939f175f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;_duckdb.DuckDBPyConnection object at 0x0000022CA1B19B00&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "mfOT",
+      "code_hash": "d1ffb6c93e3704a0520a987c4fd79eee",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Armamos un catalogo con un solo producto, categoria y costo por id_producto (MAX ignora los nulos, asi que toma el valor que si existe)</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vGiW",
+      "code_hash": "cb40a7f0754a56ce7fa8feb0dae26484",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;_duckdb.DuckDBPyConnection object at 0x0000022CA1B19B00&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SYQT",
+      "code_hash": "f4cabcac5b236b9c960df3215c44cc89",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Limpieza de los rechazados en un solo paso:</span>\n<ul>\n<li>fecha: pasa de dd/mm/yyyy a yyyy-mm-dd</li>\n<li>sucursal: TRIM (solo tenia espacios de mas)</li>\n<li>tipo_movimiento: LOWER + TRIM (venian en mayuscula o con espacios)</li>\n<li>cantidad: ABS (los negativos son un error de signo; es un supuesto, queda registrado en <code>correcciones</code>)</li>\n<li>costo, producto y categoria vacios: se completan desde el catalogo por id_producto</li>\n<li>SELECT DISTINCT elimina las copias repetidas de los ID duplicados (eran filas identicas)\nLa columna <code>correcciones</code> deja constancia de que se le arreglo a cada registro</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bMrW",
+      "code_hash": "3d6c31dc6712ce749f0e515233eabe94",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&lt;_duckdb.DuckDBPyConnection object at 0x0000022CA1B19B00&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PSQn",
+      "code_hash": "7c8608a5129351d55405eae0f5a40fc7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Creamos <code>rechazados_limpios</code> volviendo a aplicar las 9 reglas completas sobre los datos ya limpios. Si <code>motivo_rechazo</code> queda vacio, el registro quedo recuperado</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "OfTS",
+      "code_hash": "eda9d6f71e50b6278af773232dff3ee8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='OfTS-0' random-id='24980baa-9eaa-2ea2-ec08-7fc47921ff84'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;total&#92;&quot;:1143,&#92;&quot;recuperados&#92;&quot;:1143,&#92;&quot;pendientes&#92;&quot;:0}]&quot;' data-total-rows='1' data-total-columns='3' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;total&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;recuperados&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;pendientes&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lQxp",
+      "code_hash": "8c95767eb0eb88b4b3c4170eccfa6ff6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='lQxp-0' random-id='a56e8ec7-4c0c-adf1-0234-f53754da2dae'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[]&quot;' data-total-rows='0' data-total-columns='2' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;motivo_rechazo&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;cantidad&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Plbk",
+      "code_hash": "c30185308ceca92e846e4059854de332",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Resultado de la limpieza: cuantos se recuperaron y, si quedo alguno pendiente, por que regla sigue fallando</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "rSYo",
+      "code_hash": "fd3d3577ed49c97760b5a9d187b98e6b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='rSYo-0' random-id='d2fec40d-0c51-2430-036d-8480366be033'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[]&quot;' data-total-rows='0' data-total-columns='2' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;id_movimiento&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;cantidad&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "HuZB",
+      "code_hash": "61f30888d1dd79b388d6dbeca143126d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Control: no debe devolver ninguna fila (ningun id_movimiento repetido)</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "WfYj",
+      "code_hash": "a4b42b1c09e3db7982aff57ced6d21a1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='WfYj-0' random-id='46032522-60c9-f282-8738-6a15eb936a62'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000004&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-06-01&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P10&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Lavandina&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Limpieza&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Sur&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:3,&#92;&quot;costo_unitario&#92;&quot;:1500.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Ala&#92;&quot;,&#92;&quot;correcciones&#92;&quot;:&#92;&quot;sucursal&#92;&quot;,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000017&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-05-03&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P02&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Yogur&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Lacteos&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Sur&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:42,&#92;&quot;costo_unitario&#92;&quot;:650.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;LaSerenisima&#92;&quot;,&#92;&quot;correcciones&#92;&quot;:&#92;&quot;tipo&#92;&quot;,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000022&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-05-20&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P06&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Agua 1.5L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:51,&#92;&quot;costo_unitario&#92;&quot;:950.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;,&#92;&quot;correcciones&#92;&quot;:&#92;&quot;categoria&#92;&quot;,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000052&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-06-15&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P09&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Detergente&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Limpieza&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:20,&#92;&quot;costo_unitario&#92;&quot;:2800.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Ala&#92;&quot;,&#92;&quot;correcciones&#92;&quot;:&#92;&quot;tipo&#92;&quot;,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000053&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-10-30&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P01&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Leche 1L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Lacteos&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;merma&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:23,&#92;&quot;costo_unitario&#92;&quot;:1100.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;LaSerenisima&#92;&quot;,&#92;&quot;correcciones&#92;&quot;:&#92;&quot;tipo&#92;&quot;,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000078&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-08-08&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P08&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Banana kg&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Frutas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:15,&#92;&quot;costo_unitario&#92;&quot;:1700.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Verdurama&#92;&quot;,&#92;&quot;correcciones&#92;&quot;:&#92;&quot;fecha&#92;&quot;,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000085&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-06-23&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P06&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Agua 1.5L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;ingreso&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:41,&#92;&quot;costo_unitario&#92;&quot;:950.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;,&#92;&quot;correcciones&#92;&quot;:&#92;&quot;fecha&#92;&quot;,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000106&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-11-25&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P05&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Gaseosa 2L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Centro&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:8,&#92;&quot;costo_unitario&#92;&quot;:2300.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;,&#92;&quot;correcciones&#92;&quot;:&#92;&quot;categoria&#92;&quot;,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000122&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2024-12-17&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P10&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Lavandina&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Limpieza&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Norte&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;venta&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:53,&#92;&quot;costo_unitario&#92;&quot;:1500.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;Ala&#92;&quot;,&#92;&quot;correcciones&#92;&quot;:&#92;&quot;tipo&#92;&quot;,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;&#92;&quot;},{&#92;&quot;id_movimiento&#92;&quot;:&#92;&quot;MOV000124&#92;&quot;,&#92;&quot;fecha&#92;&quot;:&#92;&quot;2025-10-05&#92;&quot;,&#92;&quot;id_producto&#92;&quot;:&#92;&quot;P05&#92;&quot;,&#92;&quot;producto&#92;&quot;:&#92;&quot;Gaseosa 2L&#92;&quot;,&#92;&quot;categoria&#92;&quot;:&#92;&quot;Bebidas&#92;&quot;,&#92;&quot;sucursal&#92;&quot;:&#92;&quot;Sucursal Sur&#92;&quot;,&#92;&quot;tipo_movimiento&#92;&quot;:&#92;&quot;ingreso&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:4,&#92;&quot;costo_unitario&#92;&quot;:2300.0,&#92;&quot;proveedor&#92;&quot;:&#92;&quot;CocaCola&#92;&quot;,&#92;&quot;correcciones&#92;&quot;:&#92;&quot;fecha&#92;&quot;,&#92;&quot;motivo_rechazo&#92;&quot;:&#92;&quot;&#92;&quot;}]&quot;' data-total-rows='10' data-total-columns='12' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;id_movimiento&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;fecha&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;id_producto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;producto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;categoria&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;sucursal&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;tipo_movimiento&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;cantidad&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;costo_unitario&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;proveedor&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;correcciones&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;motivo_rechazo&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Ynfw",
+      "code_hash": "0e3d69a1a4d380f6479a8855818fc3ea",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Ejemplos de registros recuperados. La columna <code>correcciones</code> dice que se le arreglo a cada uno</span></span>"
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}

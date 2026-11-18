@@ -1,0 +1,28 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.25.2",
+    "script_metadata_hash": null
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "45c77ab1489be3a3fdcf01e880ab1618",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='Hbol-0' random-id='9e6d7b0c-6723-895d-7434-9d35606156df'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;concepto&#92;&quot;:&#92;&quot;raw_movimientos&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:2575},{&#92;&quot;concepto&#92;&quot;:&#92;&quot;validos&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:1357},{&#92;&quot;concepto&#92;&quot;:&#92;&quot;rechazados&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:1218},{&#92;&quot;concepto&#92;&quot;:&#92;&quot;rechazados_limpios&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:1143},{&#92;&quot;concepto&#92;&quot;:&#92;&quot;pendientes sin recuperar&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:0},{&#92;&quot;concepto&#92;&quot;:&#92;&quot;ids repetidos en rechazados_limpios&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:0},{&#92;&quot;concepto&#92;&quot;:&#92;&quot;regla: Sucursal inv&#92;&#92;u00e1lida&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:155},{&#92;&quot;concepto&#92;&quot;:&#92;&quot;regla: Producto o categor&#92;&#92;u00eda vac&#92;&#92;u00edo&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:279},{&#92;&quot;concepto&#92;&quot;:&#92;&quot;regla: Fecha inv&#92;&#92;u00e1lida&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:260},{&#92;&quot;concepto&#92;&quot;:&#92;&quot;regla: Cantidad inv&#92;&#92;u00e1lida&#92;&quot;,&#92;&quot;cantidad&#92;&quot;:100}]&quot;' data-total-rows='13' data-total-columns='2' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;concepto&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;cantidad&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-search='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kHeG",
+      "code_hash": null,
+      "outputs": [],
+      "console": []
+    }
+  ]
+}
