@@ -855,5 +855,115 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Punto 6: tabla final
+
+    Unimos los registros que ya eran validos con los rechazados que pudieron recuperarse,
+    descartamos los que aun fallan alguna regla y dejamos una sola fila por `id_movimiento`.
+    Las fechas y los datos numericos quedan en tipos utiles para las consultas de negocio.
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        CREATE OR REPLACE TABLE tabla_final AS
+        WITH unificados AS (
+            SELECT
+                1 AS prioridad,
+                CAST(id_movimiento AS VARCHAR) AS id_movimiento,
+                TRY_CAST(fecha AS DATE) AS fecha,
+                CAST(id_producto AS VARCHAR) AS id_producto,
+                CAST(producto AS VARCHAR) AS producto,
+                CAST(categoria AS VARCHAR) AS categoria,
+                CAST(sucursal AS VARCHAR) AS sucursal,
+                CAST(tipo_movimiento AS VARCHAR) AS tipo_movimiento,
+                TRY_CAST(cantidad AS INTEGER) AS cantidad,
+                TRY_CAST(costo_unitario AS DECIMAL(18, 2)) AS costo_unitario,
+                CAST(proveedor AS VARCHAR) AS proveedor
+            FROM validos
+
+            UNION ALL
+
+            SELECT
+                2 AS prioridad,
+                CAST(id_movimiento AS VARCHAR) AS id_movimiento,
+                TRY_CAST(fecha AS DATE) AS fecha,
+                CAST(id_producto AS VARCHAR) AS id_producto,
+                CAST(producto AS VARCHAR) AS producto,
+                CAST(categoria AS VARCHAR) AS categoria,
+                CAST(sucursal AS VARCHAR) AS sucursal,
+                CAST(tipo_movimiento AS VARCHAR) AS tipo_movimiento,
+                TRY_CAST(cantidad AS INTEGER) AS cantidad,
+                TRY_CAST(costo_unitario AS DECIMAL(18, 2)) AS costo_unitario,
+                CAST(proveedor AS VARCHAR) AS proveedor
+            FROM rechazados_limpios
+            WHERE motivo_rechazo = ''
+        ),
+        ordenados AS (
+            SELECT
+                *,
+                ROW_NUMBER() OVER (
+                    PARTITION BY id_movimiento
+                    ORDER BY prioridad
+                ) AS nro_dup
+            FROM unificados
+        )
+        SELECT
+            id_movimiento,
+            fecha,
+            id_producto,
+            producto,
+            categoria,
+            sucursal,
+            tipo_movimiento,
+            cantidad,
+            costo_unitario,
+            proveedor
+        FROM ordenados
+        WHERE nro_dup = 1
+          AND fecha IS NOT NULL
+          AND cantidad IS NOT NULL
+          AND cantidad > 0
+          AND costo_unitario IS NOT NULL
+          AND costo_unitario >= 0
+    """)
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("DESCRIBE tabla_final").df()
+    return
+
+
+@app.cell
+def _(conexion_duckdb):
+    conexion_duckdb.execute("""
+        SELECT
+            COUNT(*) AS total_final,
+            COUNT(DISTINCT id_movimiento) AS ids_unicos,
+            COUNT(*) FILTER (WHERE fecha IS NULL) AS fechas_nulas,
+            COUNT(*) FILTER (WHERE cantidad IS NULL OR cantidad <= 0) AS cantidades_invalidas,
+            COUNT(*) FILTER (WHERE costo_unitario IS NULL OR costo_unitario < 0) AS costos_invalidos
+        FROM tabla_final
+    """).df()
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Controles finales del punto 6:
+    - `total_final` debe coincidir con `ids_unicos`;
+    - las columnas de fecha y los numericos deben tener el tipo correspondiente;
+    - no deben quedar fechas, cantidades o costos invalidos.
+    """)
+    return
+
+
 if __name__ == "__main__":
     app.run()
